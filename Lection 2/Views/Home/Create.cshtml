@@ -1,0 +1,22 @@
+﻿@model IEnumerable<User>
+
+@{
+	ViewBag.Title = "All users";
+}
+
+<a asp-action="Create" class="btn btn-primary">Add user</a>
+<div class="col p-3"></div>
+<div class="row">
+	<table class="table">
+		<tr><th>Name</th><th>Age</th></tr>
+		@foreach (var item in Model)
+		{
+			<td>
+				<a asp-action="Details" asp-controller="Home" asp-route-id="@item.Id">Details</a> |
+				<a asp-action="Edit" asp-controller="Home" asp-route-id="@item.Id">Edit</a> |
+				<a asp-action="Delete" asp-controller="Home" asp-route-id="@item.Id">Remove</a>
+			</td>
+
+		}
+	</table>
+</div>
