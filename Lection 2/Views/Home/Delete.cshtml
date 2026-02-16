@@ -1,0 +1,27 @@
+﻿@model User
+
+@{
+	ViewBag.Title = "Deleting a user";
+}
+
+<div>
+	<dl class="dl-horizontal">
+		<dt>Name</dt>
+		<dd>
+			@Html.DisplayFor(model => model.Name)
+		</dd>
+
+		<dt>Age</dt>
+		<dd>
+			@Html.DisplayFor(model => model.Age)
+		</dd>
+	</dl>
+
+	<div>
+		<form asp-controller="Home" asp-action="Delete" method="post">
+			<div class="form-group">
+				<input type="submit" class="btn btn-danger" value="Remove" />
+			</div>
+		</form>
+	</div>
+</div>
