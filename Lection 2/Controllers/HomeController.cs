@@ -42,7 +42,25 @@ namespace Lection_2.Controllers
             }
             return NotFound();
         }
-
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id != null)
+            {
+                var currentUser = await _context.Users.FirstOrDefaultAsync(p => p.Id == id);
+                if (currentUser != null)
+                {
+                    return View(currentUser);
+                }
+            }
+            return NotFound();
+        }
+        [HttpPost]
+        public async Task<IActionResult> Edit(User user)
+        {
+            _context.Users.Update(user);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
 
 
     }
